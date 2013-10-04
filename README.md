@@ -29,7 +29,7 @@ A JAGS based DPU
 
 # DPU in OpenCPU
 
-    curl https://public.opencpu.org/ocpu/github/openmhealth/Nof/R/wrap.norm/json -d \
+    curl https://public.opencpu.org/ocpu/github/openmhealth/Nof/R/wrap.norm/json \
     -H 'Content-Type: application/json' \
     -d '{"Pain":[22, 18, 21,16, 22, 15, 23, 14],"Fatigue":[7,4,9,3,7,4,8,3], "Drowsy":[5,5,5,4,5,5,4,5], \
        "Sleep":[4,2,4,1,4,1,4,1], "Thinking" : [5,2,6,1,8,4,7,6], "Constipation":[10,7,10,6,9,5,10,3],\
