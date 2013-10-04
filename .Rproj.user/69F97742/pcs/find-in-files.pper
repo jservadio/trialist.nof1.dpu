@@ -1,0 +1,10 @@
+{
+    "dialog-state" : {
+        "caseSensitive" : false,
+        "filePatterns" : [
+        ],
+        "path" : "~/workspace/Nof",
+        "query" : "Outcome vectors of different lengths",
+        "regex" : false
+    }
+}

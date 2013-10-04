@@ -1,0 +1,3 @@
+import(rjags)
+export(wrap.norm)
+
