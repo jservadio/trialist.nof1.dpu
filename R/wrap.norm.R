@@ -59,9 +59,17 @@ wrap.norm <-
     
     beta.change.interval = round(rbind(Pain.beta.change[[1]], Fatigue.beta.change[[1]], Drowsy.beta.change[[1]], Sleep.beta.change[[1]], Thinking.beta.change[[1]], Constipation.beta.change[[1]]),3)
     beta.change.probs = round(rbind(Pain.beta.change[[2]], Fatigue.beta.change[[2]], Drowsy.beta.change[[2]], Sleep.beta.change[[2]], Thinking.beta.change[[2]], Constipation.beta.change[[2]]),3)
-    dimnames(beta.change.interval) = list(outnames,c("P025", "Median", "P975"))
-    dimnames(beta.change.probs) = list(outnames, paste("Proportion",c("< 0.2", "-0.2 - 0", "0 - 0.2", "> 0.2")))
+    #dimnames(beta.change.interval) = list(outnames,c("P025", "Median", "P975"))
+    #dimnames(beta.change.probs) = list(outnames, paste("Proportion",c("< 0.2", "-0.2 - 0", "0 - 0.2", "> 0.2")))
     
-    return(list(beta.change.interval, beta.change.probs))
-    
+    #make into list for easier json encoding
+    output <- list();
+    for(i in 1:nrow(beta.change.interval)){
+      output[[i]] <- list(
+        "iterval" = structure(as.list(beta.change.interval[i,]), names=c("P025", "Median", "P975")),
+        "probs" = structure(as.list(beta.change.probs[i,]), names=paste("Proportion",c("< 0.2", "-0.2 - 0", "0 - 0.2", "> 0.2")))
+      ) 
+    }
+    names(output) <- outnames
+    return(output)    
   }
