@@ -66,7 +66,7 @@ wrap.norm <-
     output <- list();
     for(i in 1:nrow(beta.change.interval)){
       output[[i]] <- list(
-        "iterval" = structure(as.list(beta.change.interval[i,]), names=c("P025", "Median", "P975")),
+        "interval" = structure(as.list(beta.change.interval[i,]), names=c("P025", "Median", "P975")),
         "probs" = structure(as.list(beta.change.probs[i,]), names=paste("Proportion",c("< 0.2", "-0.2 - 0", "0 - 0.2", "> 0.2")))
       ) 
     }
