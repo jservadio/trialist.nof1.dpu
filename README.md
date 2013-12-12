@@ -3,7 +3,9 @@ trialist.nof1.dpu
 
 A JAGS based DPU
 
-# Usage in R
+## Use in R
+
+A DPU is simply an R function that is designed to be called either locally or remotely.
 
     #install
     library(devtools)
@@ -29,7 +31,7 @@ A JAGS based DPU
       varprior.params = c(0,5)
     )
        
-# Call remotely as DPU through OpenCPU
+## Call remotely as DPU through OpenCPU
 
 For the `observations` argument, we can either pass a set of rows (which is conventional in JSON):
 
