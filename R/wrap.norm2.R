@@ -1,4 +1,4 @@
-wrap.norm <-
+wrap.norm2 <-
   function(observations, score.range = c(30, 10, 10, 10, 10, 10),
            Covs=NULL, model = "normal", var.model = "hom", nChains = 3, 
            conv.limit = 1.05, niters = 50000, nruns = 5000, setsize = 4000, 
