@@ -10,26 +10,28 @@ A JAGS based DPU
     install_github("trialist.nof1.dpu", "openmhealth")
 
     #use
-    nof1=wrap.norm(
-      Pain=c(22, 18, 21,16, 22, 15, 23, 14), 
-      Fatigue=c(7,4,9,3,7,4,8,3), 
-      Drowsy=c(5,5,5,4,5,5,4,5), 
-      Sleep=c(4,2,4,1,4,1,4,1), 
-      Thinking=c(5,2,6,1,8,4,7,6), 
-      Constipation=c(10,7,10,6,9,5,10,3),
-      Treat=c(0,1,0,1,0,1,0,1), 
-      conv.limit=1.05, 
-      niters=10000, 
-      setsize=1000, 
+    library("trialist.nof1.dpu")
+    mydata <- data.frame(
+      Pain = c(22, 18, 21,16, 22, 15, 23, 14), 
+      Fatigue = c(7,4,9,3,7,4,8,3), 
+      Drowsy = c(5,5,5,4,5,5,4,5), 
+      Sleep = c(4,2,4,1,4,1,4,1), 
+      Thinking = c(5,2,6,1,8,4,7,6), 
+      Constipation = c(10,7,10,6,9,5,10,3),
+      Treat = c(0,1,0,1,0,1,0,1)
+    )
+
+    nof1 <- wrap.norm2(
+      observations = mydata,
       alphaprior = list("norm",0,1e-6),
       betaprior = list("norm",0,1e-6),
-      varprior=list("sd","unif"),
-      varprior.params=c(0,5)
+      varprior = list("sd","unif"),
+      varprior.params = c(0,5)
     )
        
-# New DPU wrapper
+# Call remotely as DPU through OpenCPU
 
-The `wrap.norm2' function is an alternative wrapper to the same functionality. It uses data frames for input and output which makes the DPU much more flexible. For example we can pass a data frame using a list of records, which is conventional in JSON:
+For the `observations` argument, we can either pass a set of rows (which is conventional in JSON):
 
     curl https://public.opencpu.org/ocpu/github/openmhealth/trialist.nof1.dpu/R/wrap.norm2/json \
     -H 'Content-Type: application/json' \
@@ -45,7 +47,7 @@ The `wrap.norm2' function is an alternative wrapper to the same functionality. I
     ], "conv.limit": 1.05, "niters":10000, "setsize":1000, "alphaprior":["norm",0, 1e-6], 
     "betaprior": ["norm", 0, 1e-6], "varprior" : ["sd", "unif"], "varprior.params":[0,5]}'
     
-The same function can also be called using column data (instead of records).
+Or we can call the same function can using a list of columns:
 
     curl https://public.opencpu.org/ocpu/github/openmhealth/trialist.nof1.dpu/R/wrap.norm2/json \
     -H 'Content-Type: application/json' \
@@ -61,6 +63,8 @@ The same function can also be called using column data (instead of records).
     "betaprior": ["norm", 0, 1e-6], "varprior" : ["sd", "unif"], "varprior.params":[0,5]}'
 
 # Old DPU wrapper
+
+The old wrapper `wrap.norm` has been superseded by `wrap.norm2` above. This is how the old wrapper is called:
 
     curl https://public.opencpu.org/ocpu/github/openmhealth/trialist.nof1.dpu/R/wrap.norm/json \
     -H 'Content-Type: application/json' \
