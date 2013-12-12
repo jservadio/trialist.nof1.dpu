@@ -83,6 +83,6 @@ wrap.norm2 <-
     
     output <- data.frame(observation=outnames)
     output$intervals <- as.data.frame(beta.change.interval)
-    output$probs <- as.data.frame(beta.changes.probs)
+    output$probs <- as.data.frame(beta.change.probs)
     return(output)
   }
