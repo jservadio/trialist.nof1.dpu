@@ -23,9 +23,13 @@ wrap.norm2 <-
     # varprior.params is vector of parameters of variance distribution
     # path is directory where data are stored
     
+    #validate fields
+    observations <- as.data.frame(observations);
+    datafields <- c("Constipation", "Drowsy", "Fatigue", "Pain", "Sleep", "Thinking", "Treat");
+    hasfields <- datafields %in% names(observations)
     
-    if(all(c("Constipation", "Drowsy", "Fatigue", "Pain", "Sleep", "Thinking", "Treat") %in% names(observations))){
-      stop("Input argument 'observations' must contain fields Pain, Fatigue, Drowsy, Sleep, Thinking, Constipation, Treat.")
+    if(!all(hasfields)){
+      stop("Input argument 'observations' does not have required field(s): ", datafields[!hasfields]);
     }
     
     if(any(is.na(observations))){
