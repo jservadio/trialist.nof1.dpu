@@ -78,8 +78,8 @@ wrap.norm2 <-
     
     beta.change.interval = round(rbind(Pain.beta.change[[1]], Fatigue.beta.change[[1]], Drowsy.beta.change[[1]], Sleep.beta.change[[1]], Thinking.beta.change[[1]], Constipation.beta.change[[1]]),3)
     beta.change.probs = round(rbind(Pain.beta.change[[2]], Fatigue.beta.change[[2]], Drowsy.beta.change[[2]], Sleep.beta.change[[2]], Thinking.beta.change[[2]], Constipation.beta.change[[2]]),3)
-    names(beta.change.interval) = c("P025", "Median", "P975")
-    names(beta.change.probs) = paste("Proportion",c("< 0.2", "-0.2 - 0", "0 - 0.2", "> 0.2"))
+    colnames(beta.change.interval) = c("P025", "Median", "P975")
+    colnames(beta.change.probs) = paste("Proportion",c("< 0.2", "-0.2 - 0", "0 - 0.2", "> 0.2"))
     
     output <- data.frame(observation=outnames)
     output$intervals <- as.data.frame(beta.change.interval)
