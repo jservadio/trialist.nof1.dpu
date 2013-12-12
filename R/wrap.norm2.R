@@ -24,7 +24,7 @@ wrap.norm2 <-
     # path is directory where data are stored
     
     
-    if(!identical(order(names(observations)), c("Constipation", "Drowsy", "Fatigue", "Pain", "Sleep", "Thinking", "Treat"))){
+    if(all(c("Constipation", "Drowsy", "Fatigue", "Pain", "Sleep", "Thinking", "Treat") %in% names(observations))){
       stop("Input argument 'observations' must contain fields Pain, Fatigue, Drowsy, Sleep, Thinking, Constipation, Treat.")
     }
     
