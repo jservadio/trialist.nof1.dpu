@@ -35,7 +35,7 @@ A DPU is simply an R function that is designed to be called either locally or re
 
 For the `observations` argument, we can either pass a set of rows (which is conventional in JSON):
 
-    curl https://public.opencpu.org/ocpu/github/openmhealth/trialist.nof1.dpu/R/wrap.norm2/json \
+    curl https://pilots.ohmage.org/ocpu/github/openmhealth/trialist.nof1.dpu/R/wrap.norm2/json \
     -H 'Content-Type: application/json' \
     -d '{"observations":[
       {"Pain":22,"Fatigue":7,"Drowsy":5,"Sleep":4,"Thinking":5,"Constipation":10,"Treat":0},
@@ -51,7 +51,7 @@ For the `observations` argument, we can either pass a set of rows (which is conv
     
 Or we can call the same function can using a list of columns:
 
-    curl https://public.opencpu.org/ocpu/github/openmhealth/trialist.nof1.dpu/R/wrap.norm2/json \
+    curl https://pilots.ohmage.org/ocpu/github/openmhealth/trialist.nof1.dpu/R/wrap.norm2/json \
     -H 'Content-Type: application/json' \
     -d '{"observations":{
       "Pain":[22,18,21,16,22,15,23,14], 
